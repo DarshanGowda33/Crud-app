@@ -8,30 +8,37 @@
     <title>Student information</title>
 </head>
 <body>
-     <center> <div class="head">
-        <h1 id="h1">STUDENT MANAGEMENT SYSTEM</h1>
-    </div>
-    <div id="d1">
-        <button id="home" onclick="homePage()">HOME</button>
-        <button onclick="createPage()" id="create">CREATE</button>
-        <button onclick="displayPage()">DISPLAY</button>
-        <button>UPDATE</button> 
-        <button>DELETE</button>
-    </div>
-</center>
+<!-- Home Page => Title and Nav -->
+     <center id="#"> 
+        <div class="head">
+            <h1 id="h1">STUDENT MANAGEMENT SYSTEM</h1>
+        </div>
+        <div id="d1">
+            <button id="home" onclick="homePage()">HOME</button>
+            <button onclick="createPage()" id="create">CREATE</button>
+            <button onclick="displayPage()">DISPLAY</button>
+            <button onclick="updatePage()">UPDATE</button> 
+            <button onclick="deletePage()">DELETE</button>
+        </div>
+        <div id="photo"></div>
+    </center>
+    
+<!-- Create Student Block -->
     <center>
         <div id="f1" style="display: none;">
             <form action="" required>
                 <h3>Enter Student Details</h3>
-                <label for="n1"></label>Enter your name: </label><input type="text" placeholder="eg.darshan" id="n1"><br>
-                <label for="n2"></label>Enter your usn: </label><input type="text" id="n2"><br>
-                <label for="n3"></label>Enter your sem: </label><input type="text" id="n3"><br>
-                <label for="n4"></label>Enter your branch: </label><input type="text" id="n4"><br><br>
-                <label for="n5"></label>Enter your batch: </label><input type="text" id="n5"><br>
-                <button >Add student</button>
+                <label for="name"></label>Enter your name: </label><input type="text" placeholder="eg.darshan" id="name"><br>
+                <label for="usn"></label>Enter your usn: </label><input type="text" id="usn"><br>
+                <label for="sem"></label>Enter your sem: </label><input type="text" id="sem"><br>
+                <label for="branch"></label>Enter your branch: </label><input type="text" id="branch"><br><br>
+                <label for="batch"></label>Enter your batch: </label><input type="text" id="batch"><br>
+                <button onclick="saveStudent()">Add student</button>
             </form>
         </div>  
     </center>
+
+<!-- Display Student Block -->
     <div id="displayData" style="display: none;">
         <table border="1" >
             <thead>
@@ -48,6 +55,39 @@
             </TBody>
         </table>
     </div>
+
+<!-- Update Student Block -->
+    <div id="update">
+        <div id="updateById" style="display: none;">
+            <h3>Update Student Data</h3>
+            <!-- <label for="updateId" ></label> -->
+            <input type="text" id="updateId" placeholder="Enter Student USN" required>
+            <button onclick="getStudent()">Fetch Student</button>
+        </div>
+        <div id="updateDisplay" style="display: none;">
+            <form action="">
+                
+            </form>
+        </div>
+    </div>
+
+
+<!-- Delete Student Block -->
+<div class="delete">
+    <div id="deleteByUsn" style="display: none;">
+        <h3>Delete Student Data</h3>
+        <!-- <label for="updateId" ></label> -->
+        <input type="text" id="deleteUsn" placeholder="Enter Student USN" required>
+        <button onclick="deleteStudent()">Fetch Student</button>
+    </div>
+    <div id="deleteDisplay" style="display: none;">
+
+    </div>
+</div>
+
+
+
+
     <script src="script.js"></script>
 </body>
 </html>

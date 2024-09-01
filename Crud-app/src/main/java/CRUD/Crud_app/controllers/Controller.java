@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 public class Controller {
     @Autowired
     private Services service;
-    // Services service= new Services();
+    // Services service= new Services();   
     
     @PostMapping("/addStudent")
     public String insertStudent(@RequestBody Student student){
@@ -46,10 +46,18 @@ public class Controller {
     public Student displayStudentByName(@PathVariable String name){
         return service.displayStudentByName(name);
     }
+    @GetMapping("/getStudentByUsn/{usn}")
+    public Student displayStudentByUsn(@PathVariable String usn){
+        return service.displayStudentByUsn(usn);
+    }
     @DeleteMapping("/deleteById")
     public Student deleteById(@RequestParam int id){
         return service.deleteById(id);
         //return service.deleteAll();
+    }
+    @DeleteMapping("/deleteByUsn/{usn}")
+    public String deleteByUsn(@PathVariable String usn){
+        return service.deleteByUsn(usn);
     }
     @DeleteMapping("/deleteByRange")
     public List<Student> deleteByRange(@RequestParam int start,@RequestParam int end){
@@ -58,6 +66,10 @@ public class Controller {
     @PutMapping("/updateById")
     public String updateById(@RequestParam int id,@RequestBody Student student){
         return service.updateById(id,student);
+    }
+    @PutMapping("/updateStudentByUsn/{usn}")
+    public String updateById(@PathVariable String usn,@RequestBody Student student){
+        return service.updateStudentByUsn(usn, student);
     }
 }
 

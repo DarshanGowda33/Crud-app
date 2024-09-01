@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import CRUD.Crud_app.entities.Student;
 import CRUD.Crud_app.repositories.repository;
+import jakarta.transaction.Transactional;
 
 @Service
 public class Services {
@@ -61,5 +62,30 @@ public class Services {
         oldStudent.setBatch(student.getBatch());
         repo.save(oldStudent);
         return "values updated";
+    }
+    // UPDATE BY USN
+
+    public String updateStudentByUsn(String usn,Student student){
+        Student oldStudent=repo.findByUsn(usn);
+        if(oldStudent==null){
+            return "student not found";
+        }
+        oldStudent.setName(student.getName());
+        oldStudent.setBranch(student.getBranch());
+        oldStudent.setSem(student.getSem());
+        oldStudent.setBatch(student.getBatch());
+        repo.save(oldStudent);
+        return "values updated";
+    }
+
+
+    public Student displayStudentByUsn(String usn) {
+       return repo.findByUsn(usn);
+    }
+
+    @Transactional
+    public String deleteByUsn(String usn) {
+        repo.deleteByUsn(usn);
+        return "Deleted !!";
     }
 }
